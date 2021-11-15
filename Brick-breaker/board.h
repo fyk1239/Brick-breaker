@@ -3,25 +3,28 @@
 #ifndef __BOARD_H__
 #define __BOARD_H__
 
+#include <easyx.h>
+#include <Windows.h>
+
 class Board
 {
 public:
-	Board(int x, int y, int width, int height, int speed, COLORREF color);
+	Board(int x, int y, int width, int height, int speed, COLORREF color); //x坐标和y坐标均为
 	int x;
 	int y;
 	int width;
 	int height;
 	int speed;
 	COLORREF color;
-	Board();
-	~Board();
+	~Board(){}
 
 private:
 
 };
 
-Board::Board()
+Board::Board(int x, int y, int width, int height, int speed, COLORREF color)
 {
+
 }
 
 Board::~Board()

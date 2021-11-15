@@ -9,15 +9,22 @@
 #include "brick.h"
 using namespace std;
 
+#define HEIGHT 1000
+#define WIDTH 600
+#define RADIUS 10
+#define HEIGHT_OF_BOARD 20
+#define WIDTH_OF_BOARD 200
+
+
 int main()
 {
-	initgraph(700, 750);
+	initgraph(HEIGHT, WIDTH);
 
-	Board board(300, 730, 100, 20, 4, WHITE);//创建木板
-	Ball ball(10, 2, 2, YELLOW);
+	Board board(HEIGHT - 200, WIDTH / 2, HEIGHT_OF_BOARD, WIDTH_OF_BOARD, 20, 4);//创建木板
+	Ball ball(RADIUS, 2, 2, YELLOW);
 	//BeginBatchDraw()、FlushBatchDraw()、EndBatchDraw()用于防闪烁
 	BeginBatchDraw();
-	sample();
+	//sample(); //初始化砖块
 	while (1)
 	{
 		cleardevice();				//清除显示，刷新砖块显示
