@@ -11,9 +11,7 @@ using namespace std;
 
 #define HEIGHT 1000
 #define WIDTH 600
-#define RADIUS 10
-#define HEIGHT_OF_BOARD 20
-#define WIDTH_OF_BOARD 200
+
 
 
 int main()
@@ -21,7 +19,7 @@ int main()
 	initgraph(HEIGHT, WIDTH);
 
 	Board board(HEIGHT - 200, WIDTH / 2, HEIGHT_OF_BOARD, WIDTH_OF_BOARD, 20, 4);//创建木板
-	Ball ball(RADIUS, 2, 2, YELLOW);
+	Ball ball(HEIGHT - 200 + RADIUS, WIDTH / 2, 2, 2, YELLOW);
 	//BeginBatchDraw()、FlushBatchDraw()、EndBatchDraw()用于防闪烁
 	BeginBatchDraw();
 	//sample(); //初始化砖块
