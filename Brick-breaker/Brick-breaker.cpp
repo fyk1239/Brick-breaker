@@ -1,10 +1,12 @@
 ﻿// Brick-breaker.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
-#include<iostream>
-#include<time.h>
-#include<easyx.h>
-#include<conio.h>
-#include"brick.h"
+#include <iostream>
+#include <time.h>
+#include <easyx.h>
+#include <conio.h>
+#include "board.h"
+#include "ball.h"
+#include "brick.h"
 using namespace std;
 
 int main()

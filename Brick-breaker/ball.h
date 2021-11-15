@@ -6,6 +6,13 @@
 class Ball
 {
 public:
+	Ball(int circle, int vx, int vy, COLORREF color);
+	int circle;
+	int x = 300;
+	int y = 300;
+	int vx;
+	int vy;
+	COLORREF color;
 	Ball();
 	~Ball();
 
@@ -15,10 +22,7 @@ private:
 
 Ball::Ball()
 {
-}
 
-Ball::~Ball()
-{
 }
 
 void drawball(Ball& ball)

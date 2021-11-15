@@ -6,6 +6,13 @@
 class Board
 {
 public:
+	Board(int x, int y, int width, int height, int speed, COLORREF color);
+	int x;
+	int y;
+	int width;
+	int height;
+	int speed;
+	COLORREF color;
 	Board();
 	~Board();
 
