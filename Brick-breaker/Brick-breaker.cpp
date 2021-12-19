@@ -1,51 +1,45 @@
 ﻿// Brick-breaker.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
-#include <iostream>
-#include <time.h>
 #include <easyx.h>
 #include <conio.h>
-#include "board.h"
 #include "ball.h"
+#include "board.h"
 #include "brick.h"
+
 using namespace std;
 
-#define HEIGHT 1000
+#ifndef HAW
+#define HAW
+#define HEIGHT 700
 #define WIDTH 600
+#endif // !HAW
 
-
+extern bool PlayerLose; // 游戏结束信号
+extern bool PlayerWin;  // 游戏胜利信号
 
 int main()
 {
-	initgraph(HEIGHT, WIDTH);
+	initgraph(WIDTH, HEIGHT);
 
-	Board board(HEIGHT - 200, WIDTH / 2, HEIGHT_OF_BOARD, WIDTH_OF_BOARD, 20, 4);//创建木板
-	Ball ball(HEIGHT - 200 + RADIUS, WIDTH / 2, 2, 2, YELLOW);
-	//BeginBatchDraw()、FlushBatchDraw()、EndBatchDraw()用于防闪烁
+	Board board0(WIDTH / 2, HEIGHT - 20, WIDTH_OF_BOARD, HEIGHT_OF_BOARD, 20); // 创建木板
+	Ball ball0(WIDTH / 2, (double)HEIGHT - 20 - RADIUS, 0.4, -0.4, YELLOW);    // 创建小球
 	BeginBatchDraw();
-	//sample(); //初始化砖块
-	while (1)
+	initbricks();
+	PlayerLose = false;
+	PlayerWin = false;
+	while (!PlayerLose && !PlayerWin)
 	{
-		cleardevice();				//清除显示，刷新砖块显示
-		drawbrick();
-		drawball(ball);
-		collsion(ball, board);
-		drawboard0(board);
+		cleardevice();				 // 清除显示
+		drawbricks();                // 刷新砖块显示
+		collision(ball0, board0);    // 碰撞检测
+		drawball(ball0);             // 刷新球的位置
+		drawboard(board0);           // 刷新木板的位置
 		FlushBatchDraw();
 	}
 	EndBatchDraw();
-	_getch();
+	int ch = _getch();
 	closegraph();
 	return 0;
 
 }
 
-// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
-// 调试程序: F5 或调试 >“开始调试”菜单
-
-// 入门使用技巧: 
-//   1. 使用解决方案资源管理器窗口添加/管理文件
-//   2. 使用团队资源管理器窗口连接到源代码管理
-//   3. 使用输出窗口查看生成输出和其他消息
-//   4. 使用错误列表窗口查看错误
-//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
-//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
